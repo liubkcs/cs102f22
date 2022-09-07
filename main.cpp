@@ -14,11 +14,11 @@ int main() {
    int totalOuncesPasta;  // Total ounces of pasta to serve numPeople
    
    // Get number of people
-   cout<<"Enter number of people: "<<endl;
-   cin>>numPeople;
+   cout << "Enter number of people: "<<endl;
+   cin >> numPeople;
    
    // Calculate and print total ounces of pasta
-   totalOuncesPasta=numPeople*3;  // Typical ounces per person
+   totalOuncesPasta = numPeople * 3;  // Typical ounces per person
    cout << "Cook " << totalOuncesPasta << " ounces of pasta." << endl;
    
    return 0;
