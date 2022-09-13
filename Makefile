@@ -1,15 +1,20 @@
 all: main
 
+RUN = 09-07/fig1-3-1
+PROGS = $(basename $(wildcard */*.cpp))
+
 CXX = clang++
 override CXXFLAGS += -g -Wno-everything
 
-SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.cpp' -print | sed -e 's/ /\\ /g')
+all: $(PROGS)
 
-main: $(SRCS)
-	$(CXX) $(CXXFLAGS) $(SRCS) -o "$@"
+run: $(RUN)
+	"$<"
 
-main-debug: $(SRCS)
-	$(CXX) $(CXXFLAGS) -O0 $(SRCS) -o "$@"
+%: %.cpp
+	$(CXX) $(CXXFLAGS) "$<" -o "$@"
+	@grep "/$@" .gitignore > .gtmp || true
+	@[ -s .gtmp ] || echo "/$@" >> .gitignore; rm .gtmp
 
 clean:
-	rm -f main main-debug
+	rm -f $(PROGS)
