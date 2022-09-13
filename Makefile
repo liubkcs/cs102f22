@@ -1,5 +1,3 @@
-all: main
-
 RUN = 09-07/fig1-3-1.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
