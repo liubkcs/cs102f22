@@ -1,4 +1,4 @@
-RUN = 09-07/fig1-3-1.exe
+RUN = 09-12/divide-pie.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++
