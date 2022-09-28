@@ -1,4 +1,4 @@
-RUN = 09-21/lab3-27.exe
+RUN = 09-26/short.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++

@@ -1,0 +1,28 @@
+In "ASCIIbetical" order, 
+we would have this ordering:
+
+Zebra
+apple
+banana
+
+ASCIIbetical also accounts for
+punctuation and digits.
+
+A,
+A+
+A-
+B,
+B+
+B-
+C,
+C+
+C-
+
+Recommended date format:
+  YYYY-MM-DD     ISO-8601
+
+2021-12-15
+2022-09-06
+
+myreport103
+myreport928final.doc
