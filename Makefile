@@ -1,4 +1,4 @@
-RUN = 10-05/freq.exe
+RUN = 10-10/cal.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++
