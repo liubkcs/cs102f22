@@ -1,4 +1,4 @@
-RUN = 10-17/rpncalc.exe
+RUN = 10-19/sort.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++

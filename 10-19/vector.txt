@@ -1,0 +1,15 @@
+for (i = 0; i < 4; ++i) {
+   itemsList.at(i) = itemsList.at(i+1);  
+}
+
+Errors because when i==3, i+1==4,
+and itemsList.at(4) is out of range.
+
+Initial itemsList: { -55, -1, 0, 9 }
+
+At the point where we get out of range
+error, what does itemsList contain?
+
+itemsList: { -1, 0, 9, 9 }
+----------------------
+{ -55, -55, -55, -55 }
