@@ -1,4 +1,4 @@
-RUN = 10-24/tictactoe.exe
+RUN = 10-26/lab23-8.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++
