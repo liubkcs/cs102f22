@@ -1,0 +1,20 @@
+Fibonacci numbers.
+
+1,1,2,3,5,8,13,...
+
+Climbing stairs.
+  Short step (1)
+  Large step (2)
+
+8 steps high: 2+2+1+1+2
+How many ways are there to climb stairs?
+
+N=2: 2 ways: 1+1 vs 2
+N=3: 3 ways: 1+1+1 vs 2+1 vs 1+2
+N=4: 5 ways: 1+1+1+1 vs 2+2 vs 2+1+1 vs
+             1+2+1 vs 1+1+2 
+N=5: 8 ways: 1+1+1+1+1 vs 2+2+1 vs 2+1+2 vs 1+2+2 vs 1+1+2+1 vs 2+1+1+1 vs 1+2+1+1 vs 1+1+1+2.
+
+YouTube: Numberphile
+
+
