@@ -1,4 +1,4 @@
-RUN = 10-31/challenge6-11-5.exe
+RUN = 11-02/yelp.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++
