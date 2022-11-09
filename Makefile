@@ -1,4 +1,4 @@
-RUN = 11-02/yelp.exe
+RUN = 11-09/heap.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++
