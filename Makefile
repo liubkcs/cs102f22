@@ -1,4 +1,4 @@
-RUN = 11-09/heap.exe
+RUN = 11-14/readfile.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++
