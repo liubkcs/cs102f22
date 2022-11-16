@@ -1,4 +1,4 @@
-RUN = 11-14/readfile.exe
+RUN = 11-16/timehms.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++
