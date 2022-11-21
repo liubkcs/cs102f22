@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <cstdlib>
 using namespace std;
 
 // This class declaration could go in
@@ -17,6 +18,8 @@ public:
   void operator*=(int);
   void operator+=(const TimeSpan&);
   void normalize();
+  friend istream& operator>> (istream& in,
+	                            TimeSpan& ts);
 private:
   int hours, minutes, seconds, millis;
 };
@@ -45,6 +48,56 @@ ostream& operator<< (ostream& out,
 {
 	ts.Print(out);
 	return out;
+}
+
+istream& operator>> (istream& in,
+                     TimeSpan& ts)
+{
+	// For now, assume all 4 parts.
+	char sep = '@';
+	int tmp, tmp2;
+	in >> tmp;
+	in >> sep;
+ 	switch(sep) {
+		case '.':
+    	// S.m
+			ts.seconds = tmp;
+			in >> ts.millis;
+			break;
+		case ':':
+			sep = '@';
+			in >> tmp2 >> sep;
+			switch(sep) {
+				case '.':
+					// M:S.m
+				  ts.minutes = tmp;
+				  ts.seconds = tmp2;
+					in >> ts.millis;
+					break;
+				case ':':
+				  // H:M:S.m
+				  // H:M:S
+					ts.hours = tmp;
+				  ts.minutes = tmp2;
+				  in >> ts.seconds >> sep;
+				  if(sep == '.') {
+						in >> ts.millis;
+					}
+					break;
+				default:
+					// M:S
+				  ts.minutes = tmp;
+				  ts.seconds = tmp2;
+			}
+			break;
+		default:
+    	// S
+		  // No initial separator, assume
+		  // we got a single integer, treat it
+		  // as seconds.
+		  ts.seconds = tmp;
+	}
+	return in;
 }
 
 void TimeSpan::operator*=(int x)
@@ -84,21 +137,45 @@ void TimeSpan::normalize()
 // Main program (or other test code) could
 // go in main.cpp. Both cpp files would
 // #include "timehms.hpp"
+
+// Let's use TimeSpan object to accumulate times
+// for a playlist.
+// Input will be a series of timings, terminated
+// by a "-1". Add them all together, and output
+// the total time.
+
 int main() {
-	TimeSpan classDur(0,25,15,700);
-	cout << classDur << endl;
-	classDur *= 3;
-	cout << "×3 is " << classDur << endl;
-  TimeSpan excessTime(0,15,50,500);
-	cout << " + " << excessTime << endl;
-	classDur += excessTime;
-	cout << " = " << classDur << endl;
+	cout << "Enter time spans, one per line, ending with -1\n";
+  TimeSpan total;
+	string line;
+	getline(cin, line);
+	while(atoi(line.c_str()) != -1) {
+
+		TimeSpan item;
+		istringstream ins(line);
+		ins >> item;
+		cout << " + " << item << endl;
+		total += item;
+		
+		getline(cin, line);
+	}
+
+	cout << "Total time: " << total << endl;
+	
+	// TimeSpan classDur(0,25,15,700);
+	// cout << classDur << endl;
+	// classDur *= 3;
+	// cout << "×3 is " << classDur << endl;
+ //  TimeSpan excessTime(0,15,50,500);
+	// cout << " + " << excessTime << endl;
+	// classDur += excessTime;
+	// cout << " = " << classDur << endl;
 	
 	
 	// Or, we can print to a file.
-	ofstream outfile("output.txt");
-	outfile << classDur << endl;
-	outfile.close();
+	// ofstream outfile("output.txt");
+	// outfile << classDur << endl;
+	// outfile.close();
 	
 	return 0;
 }
