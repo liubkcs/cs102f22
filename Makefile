@@ -1,4 +1,4 @@
-RUN = 11-30/database.exe
+RUN = 12-12/letterset.exe
 PROGS = $(patsubst %.cpp, %.exe, $(wildcard */*.cpp))
 
 CXX = clang++
